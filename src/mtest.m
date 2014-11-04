@@ -1,24 +1,44 @@
 function [check, info] = mtest(fname, fpath)
-% Extract test sections from matlab's routine executes the test and report errors.
-
-% Copyright (C) 2011-2013 Dynare Team
+% Extracts unit test sections from matlab's routine, executes the tests and reports results.
 %
-% This file is part of Dynare.
+% INPUTS 
+%  - fname [string], name of the Matlab routine where unit tests have to be run.
+%  * fpath [string], path to the routine
+%
+% OUTPUTS 
+%  - check [integer], scalar equal to 0 if the test fails and 0 otherwise
+%  - info  [cell], a cell describing the test results. Cell info has nn rows and
+%          five columns. Each row correponds to a unitary test in fname, and the
+%          columns report the following informations:
+%
+%            Column 1 Name of the tested routine.
+%            Column 2 Number of the unitary test.
+%            Column 3 Status of the unitary test (0 if the unitary test fails, 1 otherwise).
+%            Column 4 Details about the failure (vector of 0 and 1).
+%            Column 5 Elapsed time in seconds (cpu time).
+%
+% REMARKS 
+%  - If only one input argument is provided, fname must be a string containing the
+%    full path to the targeted matlab routine.
+%  - If two input arguments are provided, fname is the base name of the targeted
+%    matlab routine and fpath is the path to this routine.
+
+% Copyright (C) 2013-2014 Dynare Team
+%
+% This file is part of Dynare (m-unit-tests module).
 %
 % Dynare is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
 % (at your option) any later version.
 %
-% Dynare is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of
-% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-% GNU General Public License for more details.
+% Dynare's m-unit-tests module is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for 
+% more details.
 %
 % You should have received a copy of the GNU General Public License
 % along with Dynare.  If not, see <http://www.gnu.org/licenses/>.
-
-% Original author: stephane DOT adjemian AT univ DASH lemans DOT fr
 
 % Default answer (no problem).
 check = 1;
@@ -54,11 +74,6 @@ end
 
 % Initialize the second output if necessary.
 if nargout>1
-    % First column   name of the tested routine.
-    % Second column  number of the unitary test.
-    % Third column   status of the unitary test (0 if the test fails, 1 otherwise)
-    % Fourth column  details about the failure (vector of integers)
-    % Fifth column   elapsed time in seconds (cpu time).
     info = cell(nn,5);
 end
 
