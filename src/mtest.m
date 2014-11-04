@@ -45,14 +45,12 @@ check = 1;
 
 % Open the matlab file.
 if nargin<2 || isempty(fpath)
-    if nargout<2
-        error('mtest:: Wrong calling sequence!')
-    end
-    % The full path to the matlab routine (with extension) is given.
+    fname = append_extension_if_needed(fname);
     fid = fopen(fname,'r');
     [junk, FNAME, vessel] = fileparts(fname);
 else
-    fid = fopen([fpath '/' fname '.m'],'r');
+    fname = append_extension_if_needed(fname);
+    fid = fopen([fpath filesep fname],'r');
     FNAME = fname;
 end
 
@@ -150,3 +148,9 @@ for i=1:nn
         delete([FNAME '_test_' int2str(i) '.m'])
     end
 end
+
+
+function file = append_extension_if_needed(file)
+    if ~isequal(file(end-1,end),'.m')
+        file = [file '.m'];
+    end
