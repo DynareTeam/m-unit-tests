@@ -1,4 +1,5 @@
 function [check, info] = mtest(fname, fpath)
+
 % Extracts unit test sections from matlab's routine, executes the tests and reports results.
 %
 % INPUTS 
