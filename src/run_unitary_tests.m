@@ -34,7 +34,7 @@ function [report, time] = run_unitary_tests(listoffiles)
 report = {};
     
 for f=1:length(listoffiles)
-    if isequal(listoffiles{f}(end-1:end),'.m') && isempty(strfind(listoffiles{f},'.#'))
+    if isempty(strfind(listoffiles{f},'.#'))
         if is_unitary_test_available(listoffiles{f})
             disp(['***** Process unitary tests in      ' listoffiles{f}])
             [check, info] = mtest(listoffiles{f});
