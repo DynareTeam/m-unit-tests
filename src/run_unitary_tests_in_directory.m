@@ -1,6 +1,6 @@
 function report = run_unitary_tests_in_directory(dirname, savereport, printreport, sendreport)
 
-% Runs all the unitary files defined in a directory (and subfolders).
+% Runs all the unitary tests defined in a directory (and subfolders).
 %
 % INPUTS 
 %  - dirname     [string], name of the directory where
