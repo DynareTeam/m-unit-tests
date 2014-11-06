@@ -1,18 +1,34 @@
-function report = run_unitary_tests_in_directory(dirname,savereport,printreport,sendreport)
+function report = run_unitary_tests_in_directory(dirname, savereport, printreport, sendreport)
 
-% Copyright (C) 2013 Dynare Team
+% Runs all the unitary files defined in a directory (and subfolders).
 %
-% This file is part of Dynare.
+% INPUTS 
+%  - dirname     [string], name of the directory where
+%  - savereport  [integer], scalar equal to 0 or 1. If equal to 1 the report is saved in a mat file.
+%  - printreport [integer], scalar equal to 0 or 1. If equal to 1 the report is printed on screen.
+%  - sendreport  [integer], scalar equal to 0 or 1. If equal to 1 the report is sent by email.
+%
+% OUTPUTS 
+%  - report      [cell], first output argument of run_unitary_test routine.
+%
+% REMARKS 
+%  1. Git needs to be available on the system and it is assumed that the content of dirname is versionned with Git.
+%
+% See also get_directory_description, run_unitary_tests, build_report_summary
+
+% Copyright (C) 2013-2014 Dynare Team
+%
+% This file is part of Dynare (m-unit-tests module).
 %
 % Dynare is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
 % (at your option) any later version.
 %
-% Dynare is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of
-% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-% GNU General Public License for more details.
+% Dynare's m-unit-tests module is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+% more details.
 %
 % You should have received a copy of the GNU General Public License
 % along with Dynare.  If not, see <http://www.gnu.org/licenses/>.
