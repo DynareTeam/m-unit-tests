@@ -25,38 +25,57 @@ else
     use_isequal_matlab_builtin = 0;
 end
 
-[nA,mA] = size(A);
-[nB,mB] = size(B);
+% Shape.
+nA = ndims(A);
+nB = ndims(B);
 
-if nA-nB
-    error('assert:: Dimensions of compared objects A and B don''t match!')
+% Dimensions.
+sA = size(A);
+sB = size(B);
+
+% Object type.
+cA = class(A);
+cB = class(B);
+
+% Number of elements.
+nn = prod(sA);
+
+if ~(isequal(nA,nB) && isequal(sA,sB))
+    error('dassert:: Dimensions of compared objects A and B don''t match!')
 end
 
-if mA-mB
-    error('assert:: Dimensions of compared objects A and B don''t match!')
-end
-
-if isstruct(B) && ~isstruct(A)
-    error('assert:: Compared objects are not of the same type!')
+if isequal(cA,cB)
+    error('dassert:: Compared objects are not of the same type!')
 end
 
 if iscell(B) && ~iscell(A)
     error('assert:: Compared objects are not of the same type!')
 end
 
-if use_isequal_matlab_builtin
-    t = isequal(A,B);
-    if ~t
-        t = isequalwithequalnans(A,B);
-    end
-else
-    t = 1;
-    if ~(isstruct(B) || iscell(B))
+if isa(cA,'double')
+    if use_isequal_matlab_builtin
+        t = isequal(A,B);
+        if ~t
+            t = isequalwithequalnans(A,B);
+        end
+    else
         if max(abs(A(:)-B(:)))>tol
             t = 0;
         end
-    else
-        % not yet implemented
-        t = NaN;
     end
+elseif isa(cA,'cell')
+    rA = reshape(cA, prod(sA), 1);
+    rB = reshape(cB, prod(sB), 1);
+    for i=1:nn
+        t = dassert(rA{i}, rB{i}, tol);
+        if ~t
+            break
+        end
+    end
+elseif isa(cA,'struct')
+    A = struct2cell(A);
+    B = struct2cell(B);
+    t = dassert(A, B, tol);
+else
+    t = isequal(A, B, tol);
 end
