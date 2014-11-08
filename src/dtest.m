@@ -50,7 +50,7 @@ if nargin>1 || isempty(tpath)
 end
 
 mex_flag = 0;
-if exist(name1)==3
+if exist(fname)==3
     mex_flag = 1;
 end
 

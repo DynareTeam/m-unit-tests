@@ -152,6 +152,6 @@ end
 
 
 function file = append_extension_if_needed(file)
-    if ~isequal(file(end-1,end),'.m')
+    if ~isequal(file(end-1:end),'.m')
         file = [file '.m'];
     end
