@@ -44,12 +44,8 @@ if ~(isequal(nA,nB) && isequal(sA,sB))
     error('dassert:: Dimensions of compared objects A and B don''t match!')
 end
 
-if isequal(cA,cB)
+if ~isequal(cA,cB)
     error('dassert:: Compared objects are not of the same type!')
-end
-
-if iscell(B) && ~iscell(A)
-    error('assert:: Compared objects are not of the same type!')
 end
 
 if isa(cA,'double')
