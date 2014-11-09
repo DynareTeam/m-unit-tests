@@ -61,6 +61,8 @@ if isa(A,'double')
             t = 1;
         end
     end
+elseif isa(A,'char')
+    t = isequal(A, B);
 elseif isa(A,'cell')
     rA = reshape(A, prod(sA), 1);
     rB = reshape(B, prod(sB), 1);
