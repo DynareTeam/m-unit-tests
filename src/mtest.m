@@ -52,7 +52,7 @@ if nargin<2 || isempty(fpath)
 else
     fname = append_extension_if_needed(fname);
     fid = fopen([fpath filesep fname],'r');
-    FNAME = fname(1:end-1);
+    FNAME = fname(1:end-2);
 end
 
 % Read the matlab file.
