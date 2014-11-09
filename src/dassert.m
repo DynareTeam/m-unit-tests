@@ -62,8 +62,8 @@ if isa(A,'double')
         end
     end
 elseif isa(A,'cell')
-    rA = reshape(cA, prod(sA), 1);
-    rB = reshape(cB, prod(sB), 1);
+    rA = reshape(A, prod(sA), 1);
+    rB = reshape(B, prod(sB), 1);
     for i=1:nn
         if nargin>2
             t = dassert(rA{i}, rB{i}, tol);
