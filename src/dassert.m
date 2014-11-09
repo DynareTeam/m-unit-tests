@@ -63,7 +63,11 @@ elseif isa(cA,'cell')
     rA = reshape(cA, prod(sA), 1);
     rB = reshape(cB, prod(sB), 1);
     for i=1:nn
-        t = dassert(rA{i}, rB{i}, tol);
+        if nargin>2
+            t = dassert(rA{i}, rB{i}, tol);
+        else
+            t = dassert(rA{i}, rB{i});
+        end
         if ~t
             break
         end
@@ -71,7 +75,11 @@ elseif isa(cA,'cell')
 elseif isa(cA,'struct')
     A = struct2cell(A);
     B = struct2cell(B);
-    t = dassert(A, B, tol);
+    if nargin>2
+        t = dassert(A, B, tol);
+    else
+        t = dassert(A, B);
+    end
 else
     if use_isequal_matlab_builtin
         t = isequal(A, B);
