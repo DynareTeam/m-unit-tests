@@ -57,6 +57,8 @@ if isa(A,'double')
     else
         if max(abs(A(:)-B(:)))>tol
             t = 0;
+        else
+            t = 1;
         end
     end
 elseif isa(A,'cell')
