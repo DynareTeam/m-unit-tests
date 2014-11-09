@@ -73,5 +73,9 @@ elseif isa(cA,'struct')
     B = struct2cell(B);
     t = dassert(A, B, tol);
 else
-    t = isequal(A, B, tol);
+    if use_isequal_matlab_builtin
+        t = isequal(A, B);
+    else
+        t = isequal(A, B, tol);
+    end
 end
