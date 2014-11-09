@@ -48,7 +48,7 @@ if ~isequal(cA,cB)
     error('dassert:: Compared objects are not of the same type!')
 end
 
-if isa(cA,'double')
+if isa(A,'double')
     if use_isequal_matlab_builtin
         t = isequal(A,B);
         if ~t
@@ -59,7 +59,7 @@ if isa(cA,'double')
             t = 0;
         end
     end
-elseif isa(cA,'cell')
+elseif isa(A,'cell')
     rA = reshape(cA, prod(sA), 1);
     rB = reshape(cB, prod(sB), 1);
     for i=1:nn
@@ -72,7 +72,7 @@ elseif isa(cA,'cell')
             break
         end
     end
-elseif isa(cA,'struct')
+elseif isa(A,'struct')
     A = struct2cell(A);
     B = struct2cell(B);
     if nargin>2
