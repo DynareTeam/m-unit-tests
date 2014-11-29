@@ -8,7 +8,7 @@ domain, this can be done with pip in a terminal:
 
 ```
  ~$ pip install sphinx_rtd_theme
- ~$ pip install sphinxcontrib-matlab
+ ~$ pip install sphinxcontrib-matlabdomain
 ```
 
 To obtain the documentation as an html file in subfolder
