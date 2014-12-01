@@ -33,6 +33,10 @@ function report = run_unitary_tests_in_directory(dirname, savereport, printrepor
 % You should have received a copy of the GNU General Public License
 % along with Dynare.  If not, see <http://www.gnu.org/licenses/>.
 
+INIT_PATH = pwd();
+
+cd(dirname);
+
 system('git show --pretty=format:"Last commit %H by %an, %ar %n-> %s" HEAD > git.info');
 system('git rev-parse HEAD > git.last-commit-hash');
 
@@ -44,6 +48,8 @@ fclose(fid);
 fid = fopen('git.last-commit-hash');
 gitlastcommithash = fgetl(fid);
 fclose(fid);
+
+cd(INIT_PATH);
 
 matlabverion = version;
 platform = computer;
