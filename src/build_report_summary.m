@@ -1,29 +1,39 @@
 function str = build_report_summary(reportfile, printonscreen, mailreport)
 
-% Copyright (C) 2013 Dynare Team
+% Builds summary report for the unit tests.
 %
-% This file is part of Dynare.
+% INPUTS 
+% - reportfile    [string]  Name of the mat files where the unit tests results are stored.
+% - printonscreen [logical] Report is displayed in the command window if true.
+% - mailreport    [string]  Email adress where the report summary is to be sent.
+%
+% OUTPUTS 
+% - str [string] Report summary. 
+
+% Copyright (C) 2013-2014 Dynare Team
+%
+% This file is part of Dynare (m-unit-tests module).
 %
 % Dynare is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
 % (at your option) any later version.
 %
-% Dynare is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of
-% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-% GNU General Public License for more details.
+% Dynare's m-unit-tests module is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for 
+% more details.
 %
 % You should have received a copy of the GNU General Public License
 % along with Dynare.  If not, see <http://www.gnu.org/licenses/>.
 
 if isequal(nargin,1)
-    printonscreen = 1;
-    mailreport = 0;
+    printonscreen = true;
+    mailreport = false;
 end
 
 if nargin<3
-    mailreport = 0;
+    mailreport = false;
 else
     if ischar(mailreport)
         mailto = mailreport;
@@ -36,7 +46,7 @@ else
         system(['scp ' reportfile ' ' server]);
         system(['scp ' reportfile(1:end-3) 'log ' server]);
     else
-        if ~isequal(mailreport,0)
+        if ~isequal(mailreport,false)
             error('build_report_summary:: Third argument must be an adress email!')
         end
     end
