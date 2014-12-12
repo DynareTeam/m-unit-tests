@@ -1,6 +1,6 @@
 function flist = get_directory_description(basedir)
 
-% List recursively all the *.m files in a directory.
+% Lists recursively all the *.m files in a directory.
 %
 % INPUTS 
 %  - basedir [string], the name of the directory to be inspected.
