@@ -1,6 +1,6 @@
 function flist = get_directory_description(basedir)
 
-% Lists recursively all the *.m files in a directory.
+% List recursively all the *.m files in a directory.
 %
 % INPUTS 
 %  - basedir [string], the name of the directory to be inspected.
@@ -8,7 +8,7 @@ function flist = get_directory_description(basedir)
 % OUTPUTS 
 %  - flist   [cell of strings], the files under basedir (and subfolders).     
 
-% Copyright (C) 2013-2014 Dynare Team
+% Copyright (C) 2013-2015 Dynare Team
 %
 % This file is part of Dynare (m-unit-tests module).
 %
@@ -30,21 +30,23 @@ if ~nargin || isempty(basedir)
     basedir = '.'; 
 end
     
-dd = dir(basedir);
-flist = {};
-file = 1;
-
-for f=1:length(dd)
-    if ~(isequal(dd(f).name,'.') || isequal(dd(f).name,'..'))
-        if dd(f).isdir
-            r = get_directory_description([ basedir filesep dd(f).name]);
-            flist = { flist{:} r{:} };
-        else
-            % Filter out files without m extension.
-            if isequal(dd(f).name(end-1:end),'.m')
-                flist{length(flist)+1} = [basedir filesep dd(f).name];
-            end
-        end
-        file = file + 1; 
-    end
+flist={};
+%get m-files in this directory
+dd = dir([basedir,filesep '*.m']);
+temp=struct2cell(dd);
+flist=[flist temp(1,:)];
+%deal with subdirectories
+dlist=getalldirectories(basedir,excludedsubfolders); %first call with excluded directories
+for ii=1:length(dlist)
+    flist=[flist getallroutinenames([ basedir filesep dlist{ii}])]; %recursive calls without subfolders
 end
+
+
+function dlist = getalldirectories(p,excluded_directories)
+    if nargin<2
+        excluded_directories = {};
+    end
+    dd = dir(p);
+    dir_result=struct2cell(dd);
+    directory_indicator=cell2mat(dir_result(4,:));
+    dlist = dir_result(1,directory_indicator==1 & ~strcmp('.',dir_result(1,:)) & ~strcmp('..',dir_result(1,:)) & ~ismember(dir_result(1,:),excluded_directories));
