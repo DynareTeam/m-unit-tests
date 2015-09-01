@@ -41,7 +41,8 @@ for f=1:length(dd)
             flist = { flist{:} r{:} };
         else
             % Filter out files without m extension.
-            if isequal(dd(f).name(end-1:end),'.m')
+            [make, my, ext] = fileparts(dd(f).name);
+            if isequal(ext, '.m')
                 flist{length(flist)+1} = [basedir filesep dd(f).name];
             end
         end
