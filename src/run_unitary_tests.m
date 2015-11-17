@@ -36,8 +36,12 @@ report = {};
 for f=1:length(listoffiles)
     if isempty(strfind(listoffiles{f},'.#'))
         if is_unitary_test_available(listoffiles{f})
-            disp(['***** Process unitary tests in      ' listoffiles{f}])
             [check, info] = mtest(listoffiles{f});
+            if check
+                disp(['***** Unitary tests in ' listoffiles{f} ' PASSED!'] )
+            else
+                disp(['***** Unitary tests in ' listoffiles{f} ' FAILED!'] )
+            end
             report = [report; info];
         else
             disp(['Booh! No unitary tests available in ' listoffiles{f}])
