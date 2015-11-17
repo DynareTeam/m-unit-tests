@@ -32,10 +32,13 @@ function [report, time] = run_unitary_tests(listoffiles)
 % along with Dynare.  If not, see <http://www.gnu.org/licenses/>.
 
 report = {};
-    
+
+testcoverage = zeros(2,1);
+
 for f=1:length(listoffiles)
     if isempty(strfind(listoffiles{f},'.#'))
         if is_unitary_test_available(listoffiles{f})
+            testcoverage(1) = testcoverage(1) + 1;
             [check, info] = mtest(listoffiles{f});
             if check
                 disp(['***** Unitary tests in ' listoffiles{f} ' PASSED!'] )
@@ -44,10 +47,15 @@ for f=1:length(listoffiles)
             end
             report = [report; info];
         else
-            disp(['Booh! No unitary tests available in ' listoffiles{f}])
+            testcoverage(2) = testcoverage(2) + 1;
         end
     end
 end
+
+atc = 100*testcoverage(1)/sum(testcoverage);
+
+skipline(2)
+disp(sprintf('Approximated test coverage is %s%%',num2str(atc)))
 
 if nargout>1
     time = clock;
