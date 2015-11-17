@@ -57,6 +57,15 @@ platform = computer;
 listoffiles = get_directory_description(dirname);
 
 diary(['report-' gitlastcommithash '.log'] )
+
+str = sprintf('Unitary tests in %s', dirname);
+lstr = length(str);
+sstr = repmat('*', 1, lstr);
+skipline()
+disp(sstr)
+disp(str)
+disp(sstr)
+
 [report, time] = run_unitary_tests(listoffiles);
 diary off
 

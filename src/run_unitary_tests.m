@@ -35,6 +35,8 @@ report = {};
 
 testcoverage = zeros(2,1);
 
+skipline()
+
 for f=1:length(listoffiles)
     if isempty(strfind(listoffiles{f},'.#'))
         if is_unitary_test_available(listoffiles{f})
