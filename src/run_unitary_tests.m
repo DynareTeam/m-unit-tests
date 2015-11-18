@@ -42,11 +42,13 @@ for f=1:length(listoffiles)
         if is_unitary_test_available(listoffiles{f})
             testcoverage(1) = testcoverage(1) + 1;
             [check, info] = mtest(listoffiles{f});
+            r0 = sprintf('[%s/%s]',num2str(sum([info{:,3}])),num2str(size(info,1)));
             if check
-                disp(['***** Unitary tests in ' listoffiles{f} ' PASSED!'] )
+                r1 = 'PASSED';
             else
-                disp(['***** Unitary tests in ' listoffiles{f} ' FAILED!'] )
+                r1 = 'FAILED';
             end
+            disp(sprintf('***** Unitary tests in %s %s %s!', listoffiles{f}, r0, r1));
             report = [report; info];
         else
             testcoverage(2) = testcoverage(2) + 1;
