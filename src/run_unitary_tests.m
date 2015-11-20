@@ -35,6 +35,10 @@ report = {};
 
 testcoverage = zeros(2,1);
 
+if nargout>2
+    list_of_routines_without_unit_tests = {};
+end
+
 skipline()
 
 for f=1:length(listoffiles)
@@ -52,6 +56,7 @@ for f=1:length(listoffiles)
             report = [report; info];
         else
             testcoverage(2) = testcoverage(2) + 1;
+            list_of_routines_without_unit_tests(testcoverage(2)) = { listoffiles{f} };
         end
     end
 end
