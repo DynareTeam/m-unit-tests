@@ -52,7 +52,11 @@ if isa(A,'double')
     if use_isequal_matlab_builtin
         t = isequal(A,B);
         if ~t
-            t = isequalwithequalnans(A,B);
+            if ~isoctave && matlab_ver_less_than('7.14')
+                t = isequalwithequalnans(A,B);
+            else
+                t = isequaln(A,B);
+            end
         end
     else
         if max(abs(A(:)-B(:)))>tol
