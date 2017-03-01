@@ -86,8 +86,17 @@ for i=1:nn
     tid = fopen([FNAME '_test_' int2str(i) '.m'],'w');
     fprintf(tid,['function [T,t,LOG] = ' FNAME '_test_' int2str(i) '()\n']);
     fprintf(tid,['try\n']);
+    if isequal(file{b1(i)+1}(1:3), '%$ ') || isequal(file{b1(i)+1}(1:2), '%$')
+        remove_first_columns = true;
+    else
+        remove_first_columns = false;
+    end
     for j=b1(i):b2(i)
-        str = sprintf('%s \n',file{j}(4:end));
+        if remove_first_columns
+            str = sprintf('%s \n',file{j}(4:end));
+        else
+            str = sprintf('%s \n',file{j}(1:end));
+        end
         str = regexprep(str, '%', '%%');
         fprintf(tid,str);
     end
