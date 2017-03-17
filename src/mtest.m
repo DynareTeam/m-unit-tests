@@ -16,7 +16,7 @@ function [check, info] = mtest(fname, fpath)
 %            Column 2 Number of the unitary test.
 %            Column 3 Status of the unitary test (0 if the unitary test fails, 1 otherwise).
 %            Column 4 Details about the failure (vector of 0 and 1).
-%            Column 5 Elapsed time in seconds (cpu time).
+%            Column 5 Elapsed time in seconds.
 %
 % REMARKS 
 %  - If only one input argument is provided, fname must be a string containing the
@@ -24,7 +24,7 @@ function [check, info] = mtest(fname, fpath)
 %  - If two input arguments are provided, fname is the base name of the targeted
 %    matlab routine and fpath is the path to this routine.
 
-% Copyright (C) 2013-2014 Dynare Team
+% Copyright (C) 2013-2017 Dynare Team
 %
 % This file is part of Dynare (m-unit-tests module).
 %
@@ -114,9 +114,9 @@ for i=1:nn
     fprintf(tid,['end\n']);
     fclose(tid);
     % Call the temporary test routine.
-    init = cputime;
+    tic;
     [TestFlag,TestDetails,LOG] = feval([FNAME '_test_' int2str(i)]);
-    time = cputime-init;
+    time = toc;
     if isnan(TestFlag)
         fprintf(['\n'])
         fprintf(['Call to ' FNAME ' test routine n°' int2str(i) ' failed (' datestr(now) ')!\n'])
