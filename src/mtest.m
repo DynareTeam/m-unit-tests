@@ -86,7 +86,7 @@ for i=1:nn
     tid = fopen([FNAME '_test_' int2str(i) '.m'],'w');
     fprintf(tid,['function [T,t,LOG] = ' FNAME '_test_' int2str(i) '()\n']);
     fprintf(tid,['try\n']);
-    if isequal(file{b1(i)+1}(1:3), '%$ ') || isequal(file{b1(i)+1}(1:2), '%$')
+    if (length(file{b1(i)+1})>2 && isequal(file{b1(i)+1}(1:3), '%$ ')) || (length(file{b1(i)+1})>1 && isequal(file{b1(i)+1}(1:2), '%$'))
         remove_first_columns = true;
     else
         remove_first_columns = false;
