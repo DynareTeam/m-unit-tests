@@ -16,7 +16,7 @@ function report = run_unitary_tests_in_directory(dirname, savereport, printrepor
 %
 % See also get_directory_description, run_unitary_tests, build_report_summary
 
-% Copyright (C) 2013-2014 Dynare Team
+% Copyright (C) 2013-2017 Dynare Team
 %
 % This file is part of Dynare (m-unit-tests module).
 %

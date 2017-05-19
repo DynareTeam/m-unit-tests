@@ -8,7 +8,7 @@ function flist = get_directory_description(basedir)
 % OUTPUTS
 %  - flist   [cell of strings], the files under basedir (and subfolders).
 
-% Copyright (C) 2013-2014 Dynare Team
+% Copyright (C) 2013-2017 Dynare Team
 %
 % This file is part of Dynare (m-unit-tests module).
 %

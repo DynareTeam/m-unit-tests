@@ -18,7 +18,7 @@ function dtest(fun, tpath)
 %
 % See also mtest
 
-% Copyright (C) 2011-2014 Dynare Team
+% Copyright (C) 2011-2017 Dynare Team
 %
 % This file is part of Dynare (m-unit-tests module).
 %

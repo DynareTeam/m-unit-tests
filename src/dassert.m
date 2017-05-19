@@ -2,7 +2,7 @@ function t = dassert(A,B,tol)
 
 % This function tests the equality of two objects.
 
-% Copyright (C) 2011-2014 Dynare Team
+% Copyright (C) 2011-2017 Dynare Team
 %
 % This file is part of Dynare (m-unit-tests module).
 %

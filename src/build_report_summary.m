@@ -10,7 +10,7 @@ function str = build_report_summary(reportfile, printonscreen, mailreport)
 % OUTPUTS
 % - str [string] Report summary.
 
-% Copyright (C) 2013-2014 Dynare Team
+% Copyright (C) 2013-2017 Dynare Team
 %
 % This file is part of Dynare (m-unit-tests module).
 %

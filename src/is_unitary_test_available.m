@@ -9,7 +9,7 @@ function info = is_unitary_test_available(fun)
 % OUTPUTS
 %  - info [integer], scalar equal to 1 if unitary tests must be run, 0 otherwise.
 
-% Copyright (C) 2013-2014 Dynare Team
+% Copyright (C) 2013-2017 Dynare Team
 %
 % This file is part of Dynare (m-unit-tests module).
 %

@@ -14,7 +14,7 @@ function [report, time] = run_unitary_tests(listoffiles)
 %
 % See also get_directory_description, mtest
 
-% Copyright (C) 2013-2014 Dynare Team
+% Copyright (C) 2013-2017 Dynare Team
 %
 % This file is part of Dynare.
 %
