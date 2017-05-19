@@ -2,11 +2,11 @@ function [report, time] = run_unitary_tests(listoffiles)
 
 % Runs unitary tests defined in a collection of files.
 %
-% INPUTS 
+% INPUTS
 %  - listoffiles [cell], The list of m files (with path) where the unitary tests are written.
 %                This cell, with n elements, is the output of get_directory_description routine.
 %
-% OUTPUTS 
+% OUTPUTS
 %  - report      [cell], Results of the unitary tests (n rows and 5 columns). Each row stores
 %                the second output argument of mtest routine (info).
 %  - time        [double], Current date and time as date vector.

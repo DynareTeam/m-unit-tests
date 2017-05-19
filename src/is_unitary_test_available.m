@@ -3,10 +3,10 @@ function info = is_unitary_test_available(fun)
 % Decides if unitary tests defined in a matlab routine (file) have to be run
 % by checking the content of the first line.
 %
-% INPUTS 
+% INPUTS
 %  - fun  [string], name of the routine (with full relative path)
 %
-% OUTPUTS 
+% OUTPUTS
 %  - info [integer], scalar equal to 1 if unitary tests must be run, 0 otherwise.
 
 % Copyright (C) 2013-2014 Dynare Team
@@ -19,13 +19,13 @@ function info = is_unitary_test_available(fun)
 % (at your option) any later version.
 %
 % Dynare's m-unit-tests module is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
-% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for 
+% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
 % more details.
 %
 % You should have received a copy of the GNU General Public License
 % along with Dynare.  If not, see <http://www.gnu.org/licenses/>.
-    
+
 info = 0;
 
 fid = fopen(fun,'r');

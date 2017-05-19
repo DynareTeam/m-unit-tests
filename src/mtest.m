@@ -2,11 +2,11 @@ function [check, info] = mtest(fname, fpath)
 
 % Extracts unit test sections from matlab's routine, executes the tests and reports results.
 %
-% INPUTS 
+% INPUTS
 %  - fname [string], name of the Matlab routine where unit tests have to be run.
 %  * fpath [string], path to the routine
 %
-% OUTPUTS 
+% OUTPUTS
 %  - check [integer], scalar equal to 0 if the test fails and 0 otherwise
 %  - info  [cell], a cell describing the test results. Cell info has nn rows and
 %          five columns. Each row correponds to a unitary test in fname, and the
@@ -18,7 +18,7 @@ function [check, info] = mtest(fname, fpath)
 %            Column 4 Details about the failure (vector of 0 and 1).
 %            Column 5 Elapsed time in seconds.
 %
-% REMARKS 
+% REMARKS
 %  - If only one input argument is provided, fname must be a string containing the
 %    full path to the targeted matlab routine.
 %  - If two input arguments are provided, fname is the base name of the targeted
@@ -34,8 +34,8 @@ function [check, info] = mtest(fname, fpath)
 % (at your option) any later version.
 %
 % Dynare's m-unit-tests module is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
-% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for 
+% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
 % more details.
 %
 % You should have received a copy of the GNU General Public License
@@ -161,6 +161,6 @@ end
 
 
 function file = append_extension_if_needed(file)
-    if ~isequal(file(end-1:end),'.m')
-        file = [file '.m'];
-    end
+if ~isequal(file(end-1:end),'.m')
+    file = [file '.m'];
+end

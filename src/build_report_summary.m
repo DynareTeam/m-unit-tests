@@ -2,13 +2,13 @@ function str = build_report_summary(reportfile, printonscreen, mailreport)
 
 % Builds summary report for the unit tests.
 %
-% INPUTS 
+% INPUTS
 % - reportfile    [string]  Name of the mat files where the unit tests results are stored.
 % - printonscreen [logical] Report is displayed in the command window if true.
 % - mailreport    [string]  Email adress where the report summary is to be sent.
 %
-% OUTPUTS 
-% - str [string] Report summary. 
+% OUTPUTS
+% - str [string] Report summary.
 
 % Copyright (C) 2013-2014 Dynare Team
 %
@@ -20,8 +20,8 @@ function str = build_report_summary(reportfile, printonscreen, mailreport)
 % (at your option) any later version.
 %
 % Dynare's m-unit-tests module is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
-% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for 
+% but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
 % more details.
 %
 % You should have received a copy of the GNU General Public License
@@ -94,9 +94,9 @@ if mailreport
     if exist('~/.matlab-send-mail-info','file')
         fid = fopen('~/.matlab-send-mail-info','r');
     else
-       disp(['build_report_summary:: I Cannot send the report to ' mailto ' because the sender and the smtp server are not defined!'])
-       disp(['                       You probably need to add a ''.matlab-send-mail-info'' in your root directory...'])
-       return
+        disp(['build_report_summary:: I Cannot send the report to ' mailto ' because the sender and the smtp server are not defined!'])
+        disp(['                       You probably need to add a ''.matlab-send-mail-info'' in your root directory...'])
+        return
     end
     setpref('Internet','SMTP_Server',fgetl(fid));
     setpref('Internet','SMTP_Username',fgetl(fid));
@@ -107,5 +107,5 @@ if mailreport
     for i=2:size(str,1)
         STR = [STR 10 deblank(str(i,:)) ];
     end
-    sendmail(mailto,'Dynare/Matlab unitary tests',STR); 
+    sendmail(mailto,'Dynare/Matlab unitary tests',STR);
 end

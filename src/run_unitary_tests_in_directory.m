@@ -2,16 +2,16 @@ function report = run_unitary_tests_in_directory(dirname, savereport, printrepor
 
 % Runs all the unitary tests defined in a directory (and subfolders).
 %
-% INPUTS 
+% INPUTS
 %  - dirname     [string], name of the directory where
 %  - savereport  [integer], scalar equal to 0 or 1. If equal to 1 the report is saved in a mat file.
 %  - printreport [integer], scalar equal to 0 or 1. If equal to 1 the report is printed on screen.
 %  - sendreport  [integer], scalar equal to 0 or 1. If equal to 1 the report is sent by email.
 %
-% OUTPUTS 
+% OUTPUTS
 %  - report      [cell], first output argument of run_unitary_test routine.
 %
-% REMARKS 
+% REMARKS
 %  1. Git needs to be available on the system and it is assumed that the content of dirname is versionned with Git.
 %
 % See also get_directory_description, run_unitary_tests, build_report_summary
